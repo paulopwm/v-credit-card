@@ -28,50 +28,52 @@ export const cardMasks = {
     mask: [
         {
             mask: '0000 000000 00000',
-            regex: '^3[47]\\d{0,13}',
+            regex: '^3[47][0-9]{4}',
             cardtype: 'american express'
         },
         {
             mask: '0000 0000 0000 0000',
-            regex: '^(?:6011|65\\d{0,2}|64[4-9]\\d?)\\d{0,12}',
+            regex: '^6(?:011|5[0-9]{2})[0-9]{4}',
             cardtype: 'discover'
         },
         {
             mask: '0000 000000 0000',
-            regex: '^3(?:0([0-5]|9)|[689]\\d?)\\d{0,11}',
+            regex: '^3(?:0[0-5]|[68][0-9])[0-9]{3}',
             cardtype: 'diners'
         },
         {
             mask: '0000 0000 0000 0000',
+            regex: '^(?:636368|636369|438935|504175|451416|636297|5067|4576|4011|506699)\\d{4}',
             cardtype: 'elo'
         },
         {
             mask: '0000 0000 0000 0000',
+            regex: '^(?:38|60)\\d{4}',
             cardtype: 'hipercard'
         },
         {
             mask: '0000 0000 0000 0000',
-            regex: '^(5[1-5]\\d{0,2}|22[2-9]\\d{0,1}|2[3-7]\\d{0,2})\\d{0,12}',
+            regex: '^5[1-5][0-9]{4}',
             cardtype: 'mastercard'
         },
         {
             mask: '0000 000000 00000',
-            regex: '^(?:2131|1800)\\d{0,11}',
+            regex: '^(?:2131|1800|35\\d{3})\\d{11}',
             cardtype: 'jcb15'
         },
         {
             mask: '0000 0000 0000 0000',
-            regex: '^(?:35\\d{0,2})\\d{0,12}',
+            regex: '^(?:2131|1800|35\\d{3})\\d{3}',
             cardtype: 'jcb'
         },
         {
             mask: '0000 0000 0000 0000',
-            regex: '^(?:5[0678]\\d{0,2}|6304|67\\d{0,2})\\d{0,12}',
+            regex: '^(5018|5081|5044|5020|5038|603845|6304|6759|676[1-3]|6799|6220|504834|504817|504645)[0-9]{8,15}$',
             cardtype: 'maestro'
         },
         {
             mask: '0000 0000 0000 0000',
-            regex: '^4\\d{0,15}',
+            regex: '^4[0-9]{5}(?:[0-9]{3})?',
             cardtype: 'visa'
         },
         {
@@ -86,21 +88,13 @@ export const cardMasks = {
     ],
     dispatch(appended, dynamicMasked) {
         const number = (dynamicMasked.value + appended).replace(/\D/g, '');
-        let card = detectCard(number);
-        if (card != null) {
-            for (var i = 0; i < dynamicMasked.compiledMasks.length; i++) {
-                if (dynamicMasked.compiledMasks[i].cardtype === card) {
-                    return dynamicMasked.compiledMasks[i];
-                }
-            }
-        }
+
         for (let i = 0; i < dynamicMasked.compiledMasks.length; i++) {
             const re = new RegExp(dynamicMasked.compiledMasks[i].regex);
             if (number.match(re) != null) {
                 return dynamicMasked.compiledMasks[i];
             }
         }
-        return dynamicMasked.compiledMasks[(dynamicMasked.compiledMasks.length - 1)];
     }
 };
 
