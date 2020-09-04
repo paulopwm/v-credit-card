@@ -67,7 +67,7 @@ export default {
         },
         name: {
             type: String,
-            default: 'JOHN DOE'
+            default: 'VT SOLUCOES'
         },
         expiration: {
             type: String,

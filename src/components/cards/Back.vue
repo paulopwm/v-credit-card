@@ -35,7 +35,7 @@ export default {
     props: {
         nameBack: {
             type: String,
-            default: 'John Doe'
+            default: 'VT Soluções'
         },
         security: {
             type: String,

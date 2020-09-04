@@ -3,10 +3,6 @@ export default {
         name: 'Amex',
         color: 'green'
     },
-    visa: {
-        name: 'Visa',
-        color: 'lime'
-    },
     diners: {
         name: 'Diners',
         color: 'orange'
@@ -14,6 +10,14 @@ export default {
     discover: {
         name: 'Discover',
         color: 'purple'
+    },
+    elo: {
+        name: 'Elo',
+        color: 'black'
+    },
+    hipercard: {
+        name: 'Hipercard',
+        color: 'red'
     },
     jcb: {
         name: 'Jcb',
@@ -34,5 +38,9 @@ export default {
     unionpay: {
         name: 'Unipay',
         color: 'cyan'
+    },
+    visa: {
+        name: 'Visa',
+        color: 'blue'
     }
 };

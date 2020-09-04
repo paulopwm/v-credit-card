@@ -427,6 +427,14 @@ export default {
         .greydark {
             fill: #616161;
         }
+
+        .blue {
+          fill: #4b88a6;
+        }
+
+        .bluedark {
+          fill: #122b40;
+        }
     }
 
     #svgname {
